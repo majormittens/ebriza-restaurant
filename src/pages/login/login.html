@@ -1,0 +1,189 @@
+<ion-navbar *navbar>
+  <ion-title>Login</ion-title>
+</ion-navbar>
+<ion-content class="page1 food-bg city-container">
+  <!--<h2>Authentication</h2>-->
+  <!--<div>
+        <label *ngIf="auth_status == 'OK'"><button ion-button (click)="signOut()" color="error">Sign Out</button>{{loggedInUser}}</label>
+    </div>-->
+  <!--
+    <div>
+        <label>Choose authentication type:</label>
+    </div>-->
+  <!--<ion-avatar>
+<ion-icon large ios="ios-person-add" md="md-person-add"></ion-icon> 
+    </ion-avatar>-->
+  <div id="page-login" class="city-animated" [hidden]="!loginActive">
+    <ion-list>
+      <ion-item class="city-field">
+        <ion-label floating>Username</ion-label>
+        <ion-input type="text" [value]="username" (input)="username = $event.target.value"></ion-input>
+      </ion-item>
+      <ion-item class="city-field">
+        <ion-label floating>Password</ion-label>
+        <ion-input [value]="password" (input)="password = $event.target.value" type="password"></ion-input>
+      </ion-item>
+    </ion-list>
+    <button ion-button round (click)="getAuthTokenSimple()" color="success" style="margin-top: 5%; ">Submit</button>
+    <!--<button ion-button (click)="useAnonymousAuth()" color="danger">Anonymous Auth</button>-->
+    <!--<br/>-->
+    <!--<label>Using {{auth_type}} authentication</label>-->
+    <!--<div>
+        <label [class.alert]="is_auth_error" [class.alert-danger]="is_auth_error">{{auth_status}}</label>
+    </div>-->
+    <div style="width: 302px; margin: auto; text-align:center; margin-top: 30%; box-shadow: 1px 1px 10px black;">
+      <div class="button-bar align-center">
+        <button ion-button block color="secondary" (click)="showSignUp()">Don't have an account?</button>
+      </div>
+    </div>
+  </div>
+  <div id="page-signup" class="city-animated" [hidden]="!signUpActive">
+    <ion-list padding>
+      <ion-item>
+        <ion-label floating>Username</ion-label>
+        <ion-input type="email" [value]="email" (input)="email = $event.target.value"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label floating>First Name</ion-label>
+        <ion-input type="text" [value]="firstName" (input)="firstName = $event.target.value"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label floating>Last Name</ion-label>
+        <ion-input type="text" [value]="lastName" (input)="lastName = $event.target.value"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label floating>Password</ion-label>
+        <ion-input type="password" [value]="signUpPassword" (input)="signUpPassword = $event.target.value"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label floating>Confirm Password</ion-label>
+        <ion-input type="password" [value]="confirmPassword" (input)="confirmPassword = $event.target.value"></ion-input>
+      </ion-item>
+      <!-- <h4 style="color:red;" ng-bind="vm.errorMessage"></h4> -->
+      <button ion-button block outline (click)="signUp()" color="primary" style="margin-top: 10%;">Sign Up</button>
+    </ion-list>
+    <div class="button-bar align-center">
+      <button ion-button block class="icon-left ion-social-facebook" color="positive" (click)="socialSignin('facebook')" type="button">
+            <ion-icon name="logo-facebook"></ion-icon>
+            Facebook
+        </button>
+      <!--<button ion-button class="icon-left ion-social-github" color="positive" (click)="socialSignin('github')"type="button">
+            <ion-icon name="logo-github"></ion-icon>
+            Github
+        </button>
+        <button ion-button class="icon-left ion-social-googleplus" color="positive" (click)="socialSignin('google')" type="button">
+            <ion-icon name="logo-google"></ion-icon>
+            Google
+        </button>-->
+    </div>
+    <div style="width: 302px; margin: auto; text-align:center; margin-top: 4%; box-shadow: 1px 1px 10px black;">
+      <div class="button-bar align-center">
+        <button ion-button color="secondary" block (click)="showLogin()">Already have an account?</button>
+      </div>
+    </div>
+  </div>
+  <!--<hr/>-->
+  <!--<h2>Change Password</h2>
+    <ion-list>
+        <ion-item>
+            <ion-label floating>Old Password</ion-label>
+            <ion-input type="password" [value]="oldPassword" (input)="oldPassword = $event.target.value"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label floating>New Password</ion-label>
+            <ion-input type="password" [value]="newPassword" (input)="newPassword = $event.target.value"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label floating>Confirm Password</ion-label>
+            <ion-input type="password" [value]="confirmNewPassword" (input)="confirmNewPassword = $event.target.value"></ion-input>
+        </ion-item>
+
+
+        <button ion-button (click)="changePassword()" color="success">Change Password</button>
+
+    </ion-list>-->
+</ion-content>
+<style>
+  .food-bg {
+    background-image: url('assets/bg.png');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+    background-size: cover;
+  }
+  
+  .square {
+    position: relative;
+    width: 50%;
+  }
+  
+  .square:after {
+    content: "";
+    display: block;
+    padding-bottom: 100%;
+  }
+  
+  .content {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+  }
+  
+  .hide {
+    opacity: 0;
+  }
+  
+  #page-signup {
+    background: white;
+    width: 302px;
+    height: 435px;
+    border-radius: 2%;
+    margin: auto;
+    text-align: center;
+    margin-top: 20%;
+    box-shadow: 1px 1px 100px black;
+    margin-bottom: 90%;
+  }
+  
+  #page-login {
+    background: white;
+    width: 300px;
+    height: 300px;
+    border-radius: 10%;
+    margin: auto;
+    text-align: center;
+    padding-top: 50px;
+    margin-top: 25%;
+    box-shadow: 1px 1px 100px black;
+    margin-bottom: 90%;
+  }
+  
+  .no-scroll .scroll-content {
+    overflow: hidden !important;
+    overflow-y: hidden !important;
+  }
+  
+  .city-animated {
+    -webkit-transform: translateZ(0);
+    -moz-transform: translateZ(0);
+    -ms-transform: translateZ(0);
+    -o-transform: translateZ(0);
+    transform: translateZ(0);
+    /* Other transform properties here */
+    -webkit-backface-visibility: hidden;
+    -moz-backface-visibility: hidden;
+    -ms-backface-visibility: hidden;
+    backface-visibility: hidden;
+    -webkit-perspective: 1000;
+    -moz-perspective: 1000;
+    -ms-perspective: 1000;
+    perspective: 1000;
+    /* Other transform properties here */
+  }
+  
+  .city-field {
+    width: 264px;
+    margin: auto;
+  }
+
+</style>

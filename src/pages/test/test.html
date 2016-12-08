@@ -1,0 +1,40 @@
+<!--
+  Generated template for the Test page.
+
+  See http://ionicframework.com/docs/v2/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-navbar>
+    <ion-title>test</ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content padding>
+  <div class="container">
+  <div [hidden]="!showSignup" class="notifications" style="background: white; width: 300px; height:300px; border-radius: 25%; margin: auto; text-align:center; padding-top: 50px; margin-top: 20%; box-shadow: 1px 1px 100px black;"
+    id="a">
+    <ion-list>
+      <ion-item style="width: 200px; margin:auto;">
+        <ion-label floating>Username</ion-label>
+        <ion-input type="text" [value]="username" (input)="username = $event.target.value"></ion-input>
+      </ion-item>
+      <ion-item style="width: 200px; margin:auto">
+        <ion-label floating>Password</ion-label>
+        <ion-input [value]="password" (input)="password = $event.target.value" type="password"></ion-input>
+      </ion-item>
+    </ion-list>
+    <button ion-button round (click)="getAuthTokenSimple()" color="success" style="margin-top: 10%; margin:auto;">Submit</button>
+    <!--<button ion-button (click)="useAnonymousAuth()" color="danger">Anonymous Auth</button>-->
+    <!--<br/>-->
+    <!--<label>Using {{auth_type}} authentication</label>-->
+    <!--<div>
+        <label [class.alert]="is_auth_error" [class.alert-danger]="is_auth_error">{{auth_status}}</label>
+    </div>-->
+  </div>
+  <div [hidden]="!showLogin" class="notifications" style="background: white; width: 100px; height:100px; border-radius: 25%; margin: auto; text-align:center; padding-top: 50px; margin-top: 20%; box-shadow: 1px 1px 100px black;"
+    id="b">
+  </div>
+  </div>
+</ion-content>
+<!--<page-login [hidden]="!showLogin"></page-login>-->
+<!--<page-signup [hidden]="!showSignup"></page-signup>-->
